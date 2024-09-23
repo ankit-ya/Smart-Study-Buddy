@@ -1,0 +1,19 @@
+
+{
+    "Computer Science": {
+      "OOPs": [
+        { "question": "What is encapsulation?", "options": ["A", "B", "C", "D"], "answer": "A" },
+        { "question": "What is inheritance?", "options": ["X", "Y", "Z", "W"], "answer": "X" }
+      ],
+      "DBMS": [
+        { "question": "What is SQL?", "options": ["Language", "Database", "Tool", "Protocol"], "answer": "Language" }
+      ]
+    },
+    "Civil Engineering": {
+      "Concrete": [
+        { "question": "What is concrete made of?", "options": ["Sand", "Cement", "Water", "All of the above"], "answer": "All of the above" }
+      ]
+    }
+    
+  }
+  

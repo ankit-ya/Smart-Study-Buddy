@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+/* styles/LoginSignup.css */
+
+.error-popup {
+  background-color: #ffdddd;
+  color: #d8000c;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #d8000c;
+  border-radius: 5px;
+}
+

@@ -1,0 +1,23 @@
+{
+    "Mathematics": {
+      "Algebra": "/pdf/Assign.pdf.pdf",
+      "Calculus": "/pdfs/Mathematics_Calculus.pdf",
+      "Geometry": "/pdfs/Mathematics_Geometry.pdf"
+    },
+    "Physics": {
+      "Mechanics": "/pdfs/Physics_Mechanics.pdf",
+      "Thermodynamics": "/pdfs/Physics_Thermodynamics.pdf",
+      "Electromagnetism": "/pdfs/Physics_Electromagnetism.pdf"
+    },
+    "Chemistry": {
+      "Organic Chemistry": "/pdfs/Chemistry_Organic.pdf",
+      "Inorganic Chemistry": "/pdfs/Chemistry_Inorganic.pdf",
+      "Physical Chemistry": "/pdfs/Chemistry_Physical.pdf"
+    },
+    "Computer Science": {
+      "Data Structures": "/pdfs/CS_Data_Structures.pdf",
+      "Algorithms": "/pdfs/CS_Algorithms.pdf",
+      "Operating Systems": "/pdfs/CS_OS.pdf"
+    }
+  }
+  

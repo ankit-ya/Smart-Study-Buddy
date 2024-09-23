@@ -1,0 +1,20 @@
+/* Example styling for Quiz component */
+.quiz-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .quiz-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+  }
+  
+  .quiz-container button[disabled] {
+    opacity: 0.6;
+  }
+  
+  .quiz-container h2 {
+    margin-bottom: 20px;
+  }
+  

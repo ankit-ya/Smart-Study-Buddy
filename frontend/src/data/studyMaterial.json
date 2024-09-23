@@ -1,0 +1,26 @@
+{
+  "category1": {
+    "topic1": {
+      "name": "Topic 1",
+      "description": "This is topic 1",
+      "pdf": "/pdf/SQL.pdf"
+    },
+    "topic2": {
+      "name": "Topic 2",
+      "description": "This is topic 2",
+      "pdf": "https://example.com/topic2.pdf"
+    }
+  },
+  "category2": {
+    "topic1": {
+      "name": "Topic 1",
+      "description": "This is topic 1",
+      "pdf": "https://example.com/topic1.pdf"
+    },
+    "topic2": {
+      "name": "Topic 2",
+      "description": "This is topic 2",
+      "pdf": "https://example.com/topic2.pdf"
+    }
+  }
+}
