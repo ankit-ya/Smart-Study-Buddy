@@ -16,7 +16,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:5000/api/register', formData);
-      navigate('/login'); // Redirect to login after successful signup
+      navigate('/login');  // Redirect to login after successful signup
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setError('Account already exists'); // Error message for existing account

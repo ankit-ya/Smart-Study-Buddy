@@ -16,8 +16,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5000/api/login', formData);
-      localStorage.setItem('token', response.data.token); // Store token
-      navigate('/profile'); // Redirect to the profile page after successful login
+      localStorage.setItem('token', response.data.token);  // Store token in localStorage
+      navigate('/profile');  // Redirect to profile after successful login
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setError("Account doesn't exist");

@@ -92,3 +92,102 @@
     cursor: pointer;
   }
   
+  /* make it smart */
+  /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+}
+
+header {
+  background-color: #337ab7;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 24px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+header h1 img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.container h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #4b6eaf;
+}
+
+.container p {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.container button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.container button:hover {
+  background-color: #45a049;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #337ab7;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer p {
+  margin: 0;
+}
