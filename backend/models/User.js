@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
-const UserSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String,
-  progress: { type: Map, of: Number,  default: {}  }, // Track quiz scores or topic mastery
-  assignments: {
-    type: Map,
-    of: Boolean, // assuming completed assignments will be true or false
-  },
+
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  firstName: { type: String },
+  lastName: { type: String },
+  gender: { type: String },
+  phone: { type: String },
+  profilePicture: { type: String },
+  progress: { type: Map, of: Number },
+  assignments: { type: Map, of: Boolean }
 });
-module.exports = mongoose.model('User', UserSchema);
+
+module.exports = mongoose.model('User', userSchema);

@@ -4,6 +4,21 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 
+const multer = require('multer');
+
+// Set up Multer storage engine
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './uploads'); // Folder where files will be stored
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname); // Ensure unique filenames
+  }
+});
+
+// Initialize the multer middleware
+const upload = multer({ storage: storage });
+
 // Middleware to verify token
 const verifyToken = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
@@ -54,7 +69,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
 // Save User Progress
 router.post('/saveProgress', verifyToken, async (req, res) => {
   const { topic, score } = req.body;
@@ -65,14 +79,14 @@ router.post('/saveProgress', verifyToken, async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    
+
     // Initialize user.progress if it doesn't exist
     if (!user.progress) {
       user.progress = new Map();
     }
 
     user.progress.set(topic, score); 
-user.markModified('progress'); // Ensure Mongoose tracks the change in Map
+    user.markModified('progress'); // Ensure Mongoose tracks the change in Map
 
     await user.save();
     console.log('Progress saved for topic:', topic, 'Score:', score);
@@ -82,7 +96,6 @@ user.markModified('progress'); // Ensure Mongoose tracks the change in Map
     res.status(500).json({ message: 'Error saving progress', error });
   }
 });
-
 
 // Get User Progress
 router.get('/getProgress', verifyToken, async (req, res) => {
@@ -106,7 +119,7 @@ router.post('/saveAssignmentProgress', verifyToken, async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    
+
     // Initialize assignments if it doesn't exist
     if (!user.assignments) {
       user.assignments = new Map();
@@ -133,11 +146,10 @@ router.get('/getAssignmentProgress', verifyToken, async (req, res) => {
   }
 });
 
-
 // Get User Profile
 router.get('/profile', verifyToken, async (req, res) => {
   try {
-    const user = await User.findById(req.userId).select('name email'); // Adjust fields as necessary
+    const user = await User.findById(req.userId).select('name email profilePicture'); // Include profilePicture
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -146,5 +158,49 @@ router.get('/profile', verifyToken, async (req, res) => {
     res.status(500).json({ message: 'Error fetching profile', error });
   }
 });
+
+// Route to handle profile picture upload
+router.post('/uploadProfilePicture', verifyToken, upload.single('profilePicture'), async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Save the file path to the user's profile in the database
+    user.profilePicture = req.file.path; // Save file path in the user's profile
+    await user.save();
+
+    res.json({ message: 'Profile picture uploaded successfully!' });
+  } catch (error) {
+    console.error('Error uploading profile picture:', error);
+    res.status(500).json({ message: 'Error uploading profile picture', error });
+  }
+});
+
+// Update User Profile
+router.put('/profile', verifyToken, async (req, res) => {
+  const { firstName, lastName, gender, phone } = req.body;
+
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Update user fields
+    user.firstName = firstName || user.firstName; // Use existing value if not provided
+    user.lastName = lastName || user.lastName;     // Use existing value if not provided
+    user.gender = gender || user.gender;           // Use existing value if not provided
+    user.phone = phone || user.phone;               // Use existing value if not provided
+
+    await user.save();
+    res.json({ message: 'Profile updated successfully!' });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: 'Error updating profile', error });
+  }
+});
+
 
 module.exports = router;
