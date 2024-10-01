@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../Home.css';
-
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const dropdownRef = useRef(null); // Create a ref for the dropdown
 
   const isAuthenticated = !!localStorage.getItem('token');
 
   useEffect(() => {
     const fetchUserProfile = async () => {
       const token = localStorage.getItem('token');
-      console.log('Token:', token); // Debugging line
+      console.log('Token:', token);
 
       if (!token) {
         navigate('/login');
@@ -27,7 +27,7 @@ const Home = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setUser(response.data); // Set user data from response
+        setUser(response.data);
       } catch (error) {
         console.error('Error fetching profile:', error);
         navigate('/login');
@@ -40,15 +40,28 @@ const Home = () => {
   }, [navigate, isAuthenticated]);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen); // Toggle dropdown menu open/close
+    setIsOpen(!isOpen);
+    console.log('Dropdown is open:', !isOpen);
   };
- 
-  
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove token on logout
-    navigate('/'); // Redirect to homepage after logout
+    localStorage.removeItem('token');
+    navigate('/');
   };
+
+  // Handle clicks outside the dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="navbar">
@@ -69,7 +82,7 @@ const Home = () => {
 
       <div className="auth-section">
         {isAuthenticated && user ? (
-          <div className="profile-dropdown">
+          <div className="profile-dropdown" ref={dropdownRef}>
             <div className="profile-info" onClick={toggleMenu}>
               <img
                 src={user.profilePicture || 'default-avatar.png'}
@@ -80,14 +93,15 @@ const Home = () => {
             </div>
 
             {isOpen && (
-              <div className="dropdown-menu">
+              <div className={`dropdown-menu ${isOpen ? 'open' : ''}`}>
+                 {console.log("Rendering dropdown", isOpen)}
                 <Link to="/profile" className="dropdown-item">My Profile</Link>
                 <Link to="/ProgressReport" className="dropdown-item">Progress Report</Link>
                 <button onClick={handleLogout} className="dropdown-item">Logout</button>
               </div>
             )}
           </div>
-        ) : null} {/* No buttons here as login/signup are on the homepage */}
+        ) : null}
 
       </div>
 

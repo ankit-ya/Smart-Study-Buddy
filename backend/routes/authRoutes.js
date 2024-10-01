@@ -179,7 +179,8 @@ router.post('/uploadProfilePicture', verifyToken, upload.single('profilePicture'
 });
 
 // Update User Profile
-router.put('/profile', verifyToken, async (req, res) => {
+// Update User Profile
+router.put('/profile', verifyToken, upload.single('profilePicture'), async (req, res) => {
   const { firstName, lastName, gender, phone } = req.body;
 
   try {
@@ -194,6 +195,10 @@ router.put('/profile', verifyToken, async (req, res) => {
     user.gender = gender || user.gender;           // Use existing value if not provided
     user.phone = phone || user.phone;               // Use existing value if not provided
 
+    if (req.file) {
+      user.profilePicture = req.file.path; // Save the uploaded profile picture path
+    }
+
     await user.save();
     res.json({ message: 'Profile updated successfully!' });
   } catch (error) {
@@ -201,6 +206,7 @@ router.put('/profile', verifyToken, async (req, res) => {
     res.status(500).json({ message: 'Error updating profile', error });
   }
 });
+
 
 
 module.exports = router;
