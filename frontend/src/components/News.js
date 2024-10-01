@@ -11,7 +11,7 @@ const News = () => {
   const [page, setPage] = useState(1); // Current page
   const [totalResults, setTotalResults] = useState(0); // Total results count
 
-  const apiKey = 'db455b858f1f46e7941d7c68939303ea';  
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY;  
   const apiUrl = `https://newsapi.org/v2/top-headlines?country=${country}&language=${language}&category=${category}&page=${page}&apiKey=${apiKey}`;
 
   useEffect(() => {
