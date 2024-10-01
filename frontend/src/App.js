@@ -20,6 +20,8 @@ import ProgressReport from './components/ProgressReport'; // New Progress Report
 
 // Community component
 import Community from './components/Community'; // Import the Community component
+import GroupPage from './components/GroupPage'; // Import GroupPage
+import { useParams } from 'react-router-dom'; // Import useParams
 
 // Helper function to check authentication
 const isAuthenticated = () => {
@@ -54,7 +56,15 @@ function App() {
 
           {/* Community route */}
           <Route path="/community" element={<PrivateRoute element={<Community />} />} /> {/* Add this line */}
-          
+
+          {/* Route for GroupPage - Ensure this is below Community */}
+          <Route 
+            path="/groups/:groupId" 
+            element={
+              <PrivateRoute 
+                element={<GroupPage groupId={useParams().groupId} />} />} 
+          /> {/* Route for GroupPage */}
+
           {/* Authentication routes */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

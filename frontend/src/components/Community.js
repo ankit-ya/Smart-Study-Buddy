@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const Community = () => {
   const [groups, setGroups] = useState([]);
@@ -76,6 +77,7 @@ const Community = () => {
           <li key={group._id}>
             <h3>{group.name}</h3>
             <p>{group.description}</p>
+            <Link to={`/groups/${group._id}`}>View Group</Link> {/* Link to GroupPage */}
             {joinedGroups.includes(group._id) ? (
               <button onClick={() => leaveGroup(group._id)}>Leave Group</button>
             ) : (

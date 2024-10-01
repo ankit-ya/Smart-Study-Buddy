@@ -1,0 +1,74 @@
+.group-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px; /* Set a max width for the chat */
+    margin: auto; /* Center the chat on the page */
+    border: 1px solid #ddd; /* Add a border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Prevent overflow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+  }
+  
+  h2 {
+    background-color: #4a90e2; /* Header background color */
+    color: white; /* Header text color */
+    padding: 15px; /* Padding */
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center the text */
+  }
+  
+  .chat-window {
+    flex: 1; /* Take the remaining space */
+    padding: 10px; /* Padding */
+    overflow-y: auto; /* Scroll if content overflows */
+    background-color: #f9f9f9; /* Light background for chat */
+  }
+  
+  .message {
+    margin-bottom: 15px; /* Space between messages */
+    padding: 10px; /* Padding */
+    border-radius: 8px; /* Rounded corners */
+    position: relative; /* Position for optional decorations */
+  }
+  
+  .message-sender {
+    font-weight: bold; /* Bold sender name */
+    margin-bottom: 5px; /* Space below sender */
+  }
+  
+  .message-content {
+    background-color: #e0f7fa; /* Light blue background for message */
+    padding: 10px; /* Padding */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .input-area {
+    display: flex; /* Flexbox for input and button */
+    padding: 10px; /* Padding */
+    background-color: #ffffff; /* White background for input area */
+    border-top: 1px solid #ddd; /* Border above input area */
+  }
+  
+  .message-input {
+    flex: 1; /* Take the remaining space */
+    padding: 10px; /* Padding */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+    resize: none; /* Prevent resizing */
+  }
+  
+  .send-button {
+    margin-left: 10px; /* Space between input and button */
+    padding: 10px 15px; /* Padding */
+    background-color: #4caf50; /* Green button */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+  }
+  
+  .send-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
