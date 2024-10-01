@@ -17,12 +17,14 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 // Progress report component
 import ProgressReport from './components/ProgressReport'; // New Progress Report component
+import News from './components/News'; // news component
 
 // Community component
 import Community from './components/Community'; // Import the Community component
 import GroupPage from './components/GroupPage'; // Import GroupPage
 import { useParams } from 'react-router-dom'; // Import useParams
-
+//help components
+import Help from './components/Help'; // Import the Help component
 // Helper function to check authentication
 const isAuthenticated = () => {
   return !!localStorage.getItem('token');  // Check if token exists in localStorage
@@ -56,6 +58,11 @@ function App() {
 
           {/* Community route */}
           <Route path="/community" element={<PrivateRoute element={<Community />} />} /> {/* Add this line */}
+          {/* Help route */}
+          <Route path="/help" element={<PrivateRoute element={<Help />} />} /> {/* Add this line */}
+           {/* news components */}
+          
+           <Route path="/news" element={<PrivateRoute element={<News />} />} /> {/* Add this line */}
 
           {/* Route for GroupPage - Ensure this is below Community */}
           <Route 

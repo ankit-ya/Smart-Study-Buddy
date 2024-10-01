@@ -98,6 +98,8 @@ const Home = () => {
                 <Link to="/profile" className="dropdown-item">My Profile</Link>
                 <Link to="/ProgressReport" className="dropdown-item">Progress Report</Link>
                 <Link to="/community" className="dropdown-item">Community</Link> {/* Add this line */}
+                <Link to="/help" className="dropdown-item">Help</Link> {/* Add this line */}
+                <Link to="/news" className="dropdown-item">News</Link> {/* Add this line */}
                 <button onClick={handleLogout} className="dropdown-item">Logout</button>
               </div>
             )}
