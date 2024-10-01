@@ -18,6 +18,9 @@ import Profile from './components/Profile';
 // Progress report component
 import ProgressReport from './components/ProgressReport'; // New Progress Report component
 
+// Community component
+import Community from './components/Community'; // Import the Community component
+
 // Helper function to check authentication
 const isAuthenticated = () => {
   return !!localStorage.getItem('token');  // Check if token exists in localStorage
@@ -48,6 +51,9 @@ function App() {
           <Route path="/Assignment" element={<PrivateRoute element={<AssignmentCategories />} />} />
           <Route path="/Assignment/:category" element={<PrivateRoute element={<AssignmentTopics />} />} />
           <Route path="/Assignment/:category/:topic" element={<PrivateRoute element={<Assignment />} />} />
+
+          {/* Community route */}
+          <Route path="/community" element={<PrivateRoute element={<Community />} />} /> {/* Add this line */}
           
           {/* Authentication routes */}
           <Route path="/signup" element={<Signup />} />

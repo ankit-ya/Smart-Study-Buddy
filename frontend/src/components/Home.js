@@ -94,9 +94,10 @@ const Home = () => {
 
             {isOpen && (
               <div className={`dropdown-menu ${isOpen ? 'open' : ''}`}>
-                 {console.log("Rendering dropdown", isOpen)}
+                {console.log("Rendering dropdown", isOpen)}
                 <Link to="/profile" className="dropdown-item">My Profile</Link>
                 <Link to="/ProgressReport" className="dropdown-item">Progress Report</Link>
+                <Link to="/community" className="dropdown-item">Community</Link> {/* Add this line */}
                 <button onClick={handleLogout} className="dropdown-item">Logout</button>
               </div>
             )}

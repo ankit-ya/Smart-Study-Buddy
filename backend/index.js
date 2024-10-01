@@ -5,6 +5,7 @@ const quizRoutes = require('./routes/quizRoutes');
 const http = require('http');
 const { Server } = require('socket.io');
 const authRoutes = require('./routes/authRoutes');
+const groupRoutes = require('./routes/groupRoutes');  // Import groupRoutes
 
 const app = express();
 const server = http.createServer(app);
@@ -20,6 +21,7 @@ app.use(express.json());
 // API routes
 app.use('/api', quizRoutes);
 app.use('/api', authRoutes);
+app.use('/api/groups', groupRoutes);  // Add group routes
 
 // Socket.io handling
 io.on('connection', (socket) => {

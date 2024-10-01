@@ -42,11 +42,11 @@ const Profile = () => {
       console.error('Error fetching profile:', error);
       navigate('/login'); // Redirect to login on error
     }
-  }, [navigate]); // Added navigate as a dependency
+  }, [navigate]);
 
   useEffect(() => {
     fetchUserProfile(); // Call the fetch function on component mount
-  }, [fetchUserProfile]); // Included fetchUserProfile in the dependency array
+  }, [fetchUserProfile]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,7 +56,7 @@ const Profile = () => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFormData({ ...formData, profilePicture: file });
-    
+
     // Create a preview of the selected image
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -110,7 +110,7 @@ const Profile = () => {
             type="text"
             className="form-control"
             name="firstName"
-            value={formData.firstName}
+            value={formData.firstName || ''} // Ensure it has a fallback value
             onChange={handleChange}
             required
           />
@@ -121,7 +121,7 @@ const Profile = () => {
             type="text"
             className="form-control"
             name="lastName"
-            value={formData.lastName}
+            value={formData.lastName || ''} // Ensure it has a fallback value
             onChange={handleChange}
             required
           />
@@ -131,7 +131,7 @@ const Profile = () => {
           <select
             className="form-control"
             name="gender"
-            value={formData.gender}
+            value={formData.gender || ''} // Ensure it has a fallback value
             onChange={handleChange}
             required
           >
@@ -147,12 +147,12 @@ const Profile = () => {
             type="tel"
             className="form-control"
             name="phone"
-            value={formData.phone}
+            value={formData.phone || ''} // Ensure it has a fallback value
             onChange={handleChange}
             required
           />
         </div>
-        
+
         {/* Image Upload Section */}
         <div className="form-group">
           <label>Upload Profile Picture</label>
@@ -165,7 +165,12 @@ const Profile = () => {
           {previewImage && (
             <div className="mt-2">
               <h5>Preview:</h5>
-              <img src={previewImage} alt="Preview" className="img-thumbnail" style={{ width: '150px', height: '150px' }} />
+              <img
+                src={previewImage}
+                alt="Preview"
+                className="img-thumbnail"
+                style={{ width: '150px', height: '150px' }}
+              />
             </div>
           )}
         </div>
@@ -179,10 +184,10 @@ const Profile = () => {
       {user.profilePicture && (
         <div className="mt-3">
           <h4>Current Profile Picture:</h4>
-          <img 
-            src={`http://localhost:5000/${user.profilePicture}`} 
-            alt="Profile" 
-            className="img-thumbnail" 
+          <img
+            src={`http://localhost:5000/${user.profilePicture}`}
+            alt="Profile"
+            className="img-thumbnail"
           />
         </div>
       )}
