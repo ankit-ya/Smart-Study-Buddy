@@ -1,3 +1,6 @@
+
+require('dotenv').config(); // must come at the top
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -42,13 +45,17 @@ io.on('connection', (socket) => {
   });
 });
 
+
+
+
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/smart-study-buddy', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect(process.env.MONGO_URI, {
+  serverApi: { version: '1', strict: true, deprecationErrors: true },
+  tlsAllowInvalidCertificates: true, // optional for dev
 })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('MongoDB connection error:', err));
+
 
 // Start server on port 5000
 server.listen(5000, () => {
