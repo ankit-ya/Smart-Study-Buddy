@@ -22,7 +22,7 @@ const Home = () => {
       }
 
       try {
-        const response = await axios.get('http://localhost:5000/api/profile', {
+        const response = await axios.get('https://smart-study-buddy-iehm.onrender.com/api/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

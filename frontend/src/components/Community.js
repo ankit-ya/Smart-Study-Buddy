@@ -10,7 +10,7 @@ const Community = () => {
     const fetchGroups = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/groups', {
+        const response = await axios.get('https://smart-study-buddy-iehm.onrender.com/api/groups', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -24,7 +24,7 @@ const Community = () => {
     const fetchJoinedGroups = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/groups/joined', {
+        const response = await axios.get('https://smart-study-buddy-iehm.onrender.com/api/groups/joined', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ const Community = () => {
   const joinGroup = async (groupId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5000/api/groups/${groupId}/join`, null, {
+      await axios.post(`https://smart-study-buddy-iehm.onrender.com/api/groups/${groupId}/join`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +57,7 @@ const Community = () => {
   const leaveGroup = async (groupId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5000/api/groups/${groupId}/leave`, null, {
+      await axios.post(`https://smart-study-buddy-iehm.onrender.com/api/groups/${groupId}/leave`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

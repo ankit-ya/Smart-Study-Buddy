@@ -25,7 +25,7 @@ const Profile = () => {
     }
 
     try {
-      const response = await axios.get('http://localhost:5000/api/profile', {
+      const response = await axios.get('https://smart-study-buddy-iehm.onrender.com/api/profile', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -84,7 +84,7 @@ const Profile = () => {
     }
 
     try {
-      await axios.put('http://localhost:5000/api/profile', formDataToSend, {
+      await axios.put('https://smart-study-buddy-iehm.onrender.com/api/profile', formDataToSend, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data', // Set content type for file upload
@@ -185,7 +185,7 @@ const Profile = () => {
         <div className="mt-3">
           <h4>Current Profile Picture:</h4>
           <img
-            src={`http://localhost:5000/${user.profilePicture}`}
+            src={`https://smart-study-buddy-iehm.onrender.com/${user.profilePicture}`}
             alt="Profile"
             className="img-thumbnail"
           />

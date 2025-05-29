@@ -48,7 +48,7 @@ function Quiz() {
     const token = localStorage.getItem('token'); // Get the token from local storage
     console.log('Token:', token); // Log token for debugging
     try {
-      await axios.post('http://localhost:5000/api/saveProgress', { topic, score: correctAnswers }, {
+      await axios.post('https://smart-study-buddy-iehm.onrender.com/api/saveProgress', { topic, score: correctAnswers }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

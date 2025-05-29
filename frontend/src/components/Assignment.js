@@ -29,7 +29,7 @@ const Assignment = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/saveAssignmentProgress', { topic, completed }, {
+      await axios.post('https://smart-study-buddy-iehm.onrender.com/api/saveAssignmentProgress', { topic, completed }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

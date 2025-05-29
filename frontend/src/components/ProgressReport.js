@@ -8,7 +8,7 @@ const ProgressReport = () => {
     const fetchProgress = async () => {
       const token = localStorage.getItem('token'); // Ensure token is stored after login
       try {
-        const response = await axios.get('http://localhost:5000/api/getProgress', {
+        const response = await axios.get('https://smart-study-buddy-iehm.onrender.com/api/getProgress', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -11,7 +11,7 @@ const GroupPage = () => {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/groups/${groupId}/queries`, {
+        const response = await axios.get(`https://smart-study-buddy-iehm.onrender.com/api/groups/${groupId}/queries`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}` // Replace with the actual method of getting the token
           }
@@ -29,7 +29,7 @@ const GroupPage = () => {
     if (newQuery.trim() === '') return;
 
     try {
-      await axios.post(`http://localhost:5000/api/groups/${groupId}/queries`, 
+      await axios.post(`https://smart-study-buddy-iehm.onrender.com/api/groups/${groupId}/queries`, 
         { content: newQuery },
         {
           headers: {
@@ -38,7 +38,7 @@ const GroupPage = () => {
         }
       );
       setNewQuery('');
-      const response = await axios.get(`http://localhost:5000/api/groups/${groupId}/queries`, {
+      const response = await axios.get(`https://smart-study-buddy-iehm.onrender.com/api/groups/${groupId}/queries`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

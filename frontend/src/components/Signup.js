@@ -15,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/register', formData);
+      await axios.post('https://smart-study-buddy-iehm.onrender.com/api/register', formData);
       navigate('/login');  // Redirect to login after successful signup
     } catch (error) {
       if (error.response && error.response.status === 400) {
