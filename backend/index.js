@@ -12,17 +12,28 @@ const groupRoutes = require('./routes/groupRoutes');  // Import groupRoutes
 
 const app = express();
 const server = http.createServer(app);
+const allowedOrigins = [
+  'http://localhost:3002',
+  'https://smart-study-buddy.vercel.app'
+];
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3002', // Allow requests from the frontend
+    origin: allowedOrigins,
     methods: ['GET', 'POST'],
-  },
+    credentials: true
+  }
 });
 
-// Enable CORS for requests from the frontend
+
+
 app.use(cors({
-  origin: 'http://localhost:3002', // Allow requests from the frontend
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
 }));
+
+
+
 
 app.use(express.json());
 
